@@ -32,8 +32,10 @@ class Assets{
 
 
   static Future<bool> init(BuildContext context, {String dir}){
-    _assets = DefaultAssetBundle.of(context);
-    _dir = dir ?? 'assets';
+    if(_assets == null) {
+      _assets = DefaultAssetBundle.of(context);
+      _dir = dir ?? 'assets';
+    }
     return Future.value(true);
   }
   static AssetBundle _assets;
